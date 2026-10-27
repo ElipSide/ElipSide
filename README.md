@@ -12,6 +12,7 @@
   <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
   <img src="https://img.shields.io/badge/NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white" alt="NestJS">
   <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js">
+  <img src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white" alt="Go">
   <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React">
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL">
@@ -28,7 +29,9 @@ Fullstack-разработчик с опытом разработки и соп�
 
 Закрываю backend, frontend, интеграции и DevOps. Уверенно разбираюсь в чужом и legacy-коде,
 проектирую микросервисную архитектуру, автоматизирую бизнес-процессы и поддерживаю стабильную
-работу сервисов. Есть опыт **руководства небольшой командой и обучения сотрудников**.
+работу сервисов. Основной фокус последних лет — сервисы для агропрома: компьютерное зрение
+для анализа зерна, голосовые AI-сервисы (робот обзвона, транскрипция, ассистенты) и
+автоматизация продаж. Есть опыт **руководства небольшой командой и обучения сотрудников**.
 
 ---
 
@@ -36,13 +39,13 @@ Fullstack-разработчик с опытом разработки и соп�
 
 | Направление | Технологии |
 |---|---|
-| **Backend** | Python (FastAPI, Flask) · TypeScript (NestJS) · Node.js (Express) · PHP / Bitrix · REST API, проектирование API · очереди задач (Celery / Redis) · webhooks |
+| **Backend** | Python (FastAPI, Flask) · Go (Fiber) · TypeScript (NestJS) · Node.js (Express) · PHP / Bitrix · REST API, проектирование API · очереди задач (Celery / Redis, RabbitMQ) · webhooks |
 | **Frontend** | React · Redux Toolkit · JavaScript (ES6+) · HTML5 · CSS · Jinja2 · jQuery |
-| **Базы данных** | PostgreSQL (PostGIS) · MySQL · TypeORM · SQLAlchemy · SQL, проектирование схем БД |
+| **Базы данных** | PostgreSQL (PostGIS, JSONB) · MySQL · TypeORM · SQLAlchemy · SQL, проектирование схем БД |
 | **DevOps / инфраструктура** | Docker · Docker Compose · Linux · Nginx · Apache · Portainer · systemd · Git |
 | **Данные и логи** | Elasticsearch · Logstash · Kibana (ELK) · сбор и анализ логов · дашборды |
-| **ML / RAG** | sentence-transformers · мультиязычные эмбеддинги · semantic search · кластеризация · RAG, RAGFlow (без платных LLM) |
-| **Интеграции** | Guardant (лицензирование) · Telegram Bots / WebApp · Bitrix24 · ERP/CRM · DaData · Google Sheets |
+| **ML / CV / речь** | sentence-transformers · semantic search · кластеризация · RAG, RAGFlow (без платных LLM) · компьютерное зрение (SAM2) · ASR/диаризация (whisper.cpp, NeMo MSDD, Vosk) · локальные LLM |
+| **Интеграции** | Guardant (лицензирование) · Telegram Bots / WebApp · MAX Messenger · Bitrix24 · ERP/CRM · DaData · Google Sheets · YooMoney · Asterisk (телефония) |
 | **Прочее** | Микросервисная архитектура · декомпозиция задач · управление разработкой · работа с legacy-кодом |
 
 ---
@@ -76,24 +79,42 @@ Linux · BookStack · Git
 
 ### Fullstack developer · ООО «СиСорт» · `Октябрь 2021 — настоящее время`
 
-Разрабатываю внутренние корпоративные сервисы полного цикла: от анализа задачи и проектирования БД
-до запуска, поддержки и доработок.
+Разрабатываю продукты компании — производителя фотосепараторов зерна, семян, орехов и кофе —
+полного цикла: от анализа задачи и проектирования БД до запуска и сопровождения.
+Веду разработку большинства сервисов: около 1000 коммитов в 2026 году.
 
-- Проектирую **REST API и структуры баз данных** под реальные бизнес-процессы: продажи, документы,
-  личные кабинеты, справочники, интеграции.
-- Разработал систему **автоматического формирования коммерческих предложений, договоров и счетов**
-  на основе номенклатуры и услуг; сервис стандартизирует документы и снижает ручную работу менеджеров.
-- Реализовал личные кабинеты, разграничение прав доступа, внутренние административные панели
-  и интерфейсы для сотрудников.
-- Разрабатывал **Telegram-ботов и Telegram WebApp** для внутренних сценариев, уведомлений
-  и работы с пользователями.
-- Писал скрапперы и сервисы обработки данных, интегрировал внешние API (CRM/ERP, справочники
-  контрагентов, табличные источники).
-- **Руководил небольшой командой разработчиков** и обучал сотрудников без опыта программирования:
-  оценка задач, распределение нагрузки, контроль и согласование результата.
+- **Экосистема коммерческих предложений** — флагманская система отдела продаж на
+  FastAPI + PostgreSQL: подбор и расчёт оборудования, сборка КП, счета и договоры,
+  презентация КП на встрече с клиентом, протоколы испытаний, PDF со ссылкой на электронную
+  версию и QR-кодом, 3D-модели машин и видеоролики культур. Боты Telegram и MAX.
+  Основной контрибьютор проекта.
+- **ЭРД — электронная разборная доска**: приёмка зерна по фото — разбор навески, раскладка
+  объектов по фракциям и протокол приёмки по ГОСТ. Бэкенд на **Go/Fiber** с PostgreSQL
+  (JSONB), фронт — автономная HTML-страница; интеграция с десктопным ImageView (C#) для
+  выделения области анализа. Docker Compose, CI.
+- **«Калибр» — компьютерное зрение для агроанализа**: REST API с очередью RabbitMQ и
+  GPU-воркером SAM2 — геометрия, цвет и дефекты каждого объекта; C++/Python-расширения
+  (твёрдость зерна, текстурные признаки NGTDM); прикладные метрики — оценка качества
+  протравливания семян по фотографии пробы.
+- **AgroSearch** — платформа поиска и анализа сельхоздеклараций: веб-кабинет и англоязычная
+  версия, боты Telegram и MAX, карта логистики на PostGIS, новостные события, подписки
+  с оплатой YooMoney, админ-панель и публичный API.
+- **Голосовые AI-сервисы**: робот исходящих звонков на **Asterisk** с локальной LLM и TTS
+  в реальном времени; CRM обзвона (FastAPI + Celery) с вердиктами номеров и классификацией
+  отказов; транскрипция с диаризацией спикеров (**whisper.cpp + NeMo MSDD**) и прогрессом
+  по WebSocket; архив звонков менеджеров из Битрикс24.
+- **Выставочный стенд фотосепаратора**: голосовой ассистент на **Vosk** — голосовые команды,
+  экранное меню, викторина и колесо фортуны, сканер лица с определением возраста и пола,
+  передача контактов в CRM.
+- **Телеметрия и данные**: сбор суточной статистики фотосепараторов (MySQL → PostgreSQL,
+  CSV), веб-пульт управления машиной с зеркалом экрана и обратными туннелями, парсеры
+  отраслевых сайтов и новостей 45 региональных минсельхозов, отчёты в PDF и Telegram.
+- **Руководил небольшой командой разработчиков** и обучал сотрудников без опыта
+  программирования: оценка задач, распределение нагрузки, контроль и согласование результата.
 
-**Стек:** Python · FastAPI · Flask · JavaScript · React · Jinja2 · PostgreSQL · MySQL ·
-Docker Compose · Linux · Nginx · Telegram Bots/WebApp · REST API · Git
+**Стек:** Python · FastAPI · Go (Fiber) · JavaScript/TypeScript · React · PostgreSQL · MySQL ·
+RabbitMQ · Redis/Celery · Docker Compose · Linux · Nginx · Telegram/MAX Bots · Asterisk ·
+whisper.cpp · SAM2 · PostGIS · Git
 
 ---
 
@@ -157,6 +178,8 @@ Docker Compose · Linux · Nginx · Telegram Bots/WebApp · REST API · Git
   и генерация PDF-документов.
 - Доменная модель вокруг менеджера, КП, позиций и номенклатуры; интеграции с CRM/ERP — передача
   клиента, состава, суммы и статуса.
+- Идея выросла в боевую **экосистему КП СиСорт** (см. раздел «Опыт»): подбор оборудования,
+  презентация на встрече, протоколы испытаний, боты Telegram и MAX.
 - Заложено расширение: подключение новых калькуляторов, CRM/ERP и white-label сценариев.
 
 ### Slide Builder Pro — нативный редактор документов и протоколов
@@ -243,20 +266,22 @@ Docker Compose · Linux · Nginx · Telegram Bots/WebApp · REST API · Git
 I'm Dmitry Kraynov — a fullstack developer building and maintaining **production B2B services
 end to end**: from database and API design to deployment and operations on Docker/Linux.
 I cover backend, frontend, integrations and DevOps, work confidently with legacy code, design
-microservice architectures and automate business processes. I have experience leading a small
+microservice architectures and automate business processes. Recent focus: agri-industry services —
+computer vision for grain analysis, voice AI (calling robots, transcription, assistants) and
+sales automation. I have experience leading a small
 team and onboarding developers.
 
 Based in Barnaul, Russia · remote · English B1.
 
 ### Key skills
 
-- **Backend** — Python (FastAPI, Flask), TypeScript (NestJS), Node.js (Express), PHP / Bitrix, REST API design, task queues (Celery / Redis), webhooks
+- **Backend** — Python (FastAPI, Flask), Go (Fiber), TypeScript (NestJS), Node.js (Express), PHP / Bitrix, REST API design, task queues (Celery / Redis, RabbitMQ), webhooks
 - **Frontend** — React, Redux Toolkit, JavaScript (ES6+), HTML5, CSS, Jinja2, jQuery
-- **Databases** — PostgreSQL (PostGIS), MySQL, TypeORM, SQLAlchemy, schema design
+- **Databases** — PostgreSQL (PostGIS, JSONB), MySQL, TypeORM, SQLAlchemy, schema design
 - **DevOps** — Docker, Docker Compose, Linux, Nginx, Apache, Portainer, systemd, Git
 - **Data & logs** — Elasticsearch, Logstash, Kibana (ELK), log pipelines, dashboards
-- **ML / RAG** — sentence-transformers, multilingual embeddings, semantic search, clustering, RAG, RAGFlow (no paid LLMs)
-- **Integrations** — Guardant licensing, Telegram Bots / WebApp, Bitrix24, ERP/CRM, DaData, Google Sheets
+- **ML / CV / speech** — sentence-transformers, semantic search, clustering, RAG, RAGFlow (no paid LLMs), computer vision (SAM2), ASR/diarization (whisper.cpp, NeMo MSDD, Vosk), local LLMs
+- **Integrations** — Guardant licensing, Telegram Bots / WebApp, MAX Messenger, Bitrix24, ERP/CRM, DaData, Google Sheets, YooMoney, Asterisk telephony
 
 ### Selected projects
 
@@ -278,11 +303,20 @@ centralized log collection and analytics on ELK with a React/Redux activity dash
 Docker infrastructure and an internal BookStack knowledge base.
 
 **Fullstack Developer** · SiSort LLC · `Oct 2021 — present`
-Build internal corporate services end to end — requirements, database design, REST API, UI, deployment
-and support. Delivered automated generation of commercial proposals, contracts and invoices; personal
-accounts with role-based access; internal admin panels; Telegram bots and WebApps; scrapers and
-integrations with CRM/ERP and external registries. Led a small development team and trained employees
-with no prior programming background.
+Build the company's products (photo-separator machines for grain, seeds, nuts and coffee)
+end to end — requirements, database design, REST API, UI, deployment and support. Lead
+development of most services (~1000 commits in 2026). Main contributor to the flagship
+sales-quote ecosystem on FastAPI + PostgreSQL: equipment selection, quotes, contracts and
+invoices, client-meeting presentations, test protocols, PDF with QR-linked online version,
+Telegram and MAX bots. Built the electronic sample-splitting board for grain acceptance by
+photo (Go/Fiber + PostgreSQL, GOST acceptance protocol, C# ImageView integration), a
+computer-vision grain analysis service (RabbitMQ queue, SAM2 GPU worker, C++/Python
+extensions), and the AgroSearch declaration platform (PostGIS logistics map, YooMoney
+subscriptions, public API, Telegram/MAX bots). Delivered a suite of voice AI services — an
+Asterisk outbound calling robot with a local LLM and real-time TTS, a FastAPI/Celery calling
+CRM, whisper.cpp + NeMo diarization, and an exhibition-stand voice assistant on Vosk with
+face scanning and CRM hand-off. Led a small development team and trained employees with no
+prior programming background.
 
 ### Education
 
